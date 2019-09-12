@@ -9,11 +9,6 @@ def index():
     """Return homepage."""
     name = request.args.get()
     
-    params = {
-        "q" : 
-        "key" : "W5KKJLL9VWOE"
-        "limit" : 10
-    }
     
     r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (q, key, limit))
    
