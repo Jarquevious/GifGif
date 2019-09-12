@@ -7,11 +7,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Return homepage."""
-    name = request.args.get()
-    
-    
-    r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (q, key, limit))
-   
    
     # TODO: Extract the query term from url using request.args.get()
     
