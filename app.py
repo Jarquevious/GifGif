@@ -16,7 +16,11 @@ def index():
     }
     
     r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (q, key, limit))
-   
+    if r.status_code == 200:
+        top_8gifs = json.loads(r.content)
+        print( top_8gifs)
+    else:
+        top_8gifs = none
    
     # TODO: Extract the query term from url using request.args.get()
     
