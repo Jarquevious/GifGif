@@ -7,11 +7,20 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Return homepage."""
-   params = {
-       "q" :"search"
-       'key' : "W5KKJLL9VWOE"
+    params = {
+       "q" :"search",
+        "key" : "W5KKJLL9VWOE",
        "limit" : 10
    }
+
+    r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % ("q", "key", "limit"))
+
+    if r.status_code == 200:
+    # load the GIFs using the urls for the smaller GIF sizes
+        top_8gifs = json.loads(r.content)
+        print(top_8gifs)
+    else:
+        top_8gifs = None
     # TODO: Extract the query term from url using request.args.get()
     
     # TODO: Make 'params' dictionary containing:
