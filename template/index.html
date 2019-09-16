@@ -1,19 +1,31 @@
 <!-- templates/index.html -->
 {% extend 'base.html' %}{% block title %} Gif Gif {% endblock %} {% block content %}
-
-<div class="form_containter">
-    <form action="/">
-    <p>
-        <input class="typehead" type="text" name="search" placeholder="Search..."/>
-    </p> 
-    </form>
-
-    <button type="submit" name="button" value="trending" class="btn btn-primary">
-        trending gifs 
-    </button>
-
-</div>
-{% endblock %}
+<nav>
+    <div>
+        <h1>GifGif</h1>
+    </div>
+    <div class="form_containter">
+        <form action="/">
+            <p>
+                <input class="typehead" type="text" name="search" placeholder="Search..."/>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </p> 
+        </form>
+        <form>
+            <button type="submit" name="button" value="trending" class="btn btn-primary">
+                trending gifs 
+            </button>
+        </form>
+    </div>
+</nav>
+{% if gifs %} {% for gif in gifs %} 
+<div class="gif_container">{% include 'gif.html' %}</div>
+{% endfor %} {% else %}
+<h1>ERROR</h1>
+<p> 
+    This gif does not exist, please try again
+</p>
+{% endif %} {% endblock %}
 <!-- TODO: Extend 'base.html' and put content into a block 'body' to match -->
 
 <!-- TODO: Make an HTML form containing a search box and a submit button to add
