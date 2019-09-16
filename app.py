@@ -4,25 +4,23 @@ import json
 
 app = Flask(__name__)
 
-@app.route('/')
+
+limit = 10
+tennorkey = "W5KKJLL9VWOE"
+
+@app.route('/search')
 def index():
-    """Return homepage."""
+    """Return homepage."""    
+    search = request.args.get('search')
+    
     our_params = {
        "q" :"search",
-        "key" : "W5KKJLL9VWOE",
+        "tennorkey" : "W5KKJLL9VWOE",
        "limit" : 10
    }
 
-    r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" ,params = our_params)
-
-    if r.status_code == 200:
-    # load the GIFs using the urls for the smaller GIF sizes
-        top_8gifs = json.loads(r.content)
-        print(top_8gifs)
-    else:
-        top_8gifs = None
     
-    gif_json = r.json() 
+    #gif_json = r.json() 
     # TODO: Extract the query term from url using request.args.get()
     
     # TODO: Make 'params' dictionary containing:

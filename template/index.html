@@ -1,6 +1,13 @@
 <!-- templates/index.html -->
+{% extend 'base.html' %}
 
-
+{% block body %}
+<form action= '/'>
+    <p>
+        <input type="text" placeholder="Search..">
+    </p>
+</form>
+{% endblock %}
 <!-- TODO: Extend 'base.html' and put content into a block 'body' to match -->
 
 <!-- TODO: Make an HTML form containing a search box and a submit button to add
