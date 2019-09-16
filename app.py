@@ -8,17 +8,21 @@ app = Flask(__name__)
 limit = 10
 tennorkey = "W5KKJLL9VWOE"
 
-@app.route('/search')
+@app.route('/')
 def index():
     """Return homepage."""    
     search = request.args.get('search')
     
     our_params = {
-       "q" :"search",
+       "q" : search,
         "tennorkey" : "W5KKJLL9VWOE",
        "limit" : 10
    }
 
+
+
+    button = request.args.get('button')
+    
     r = requests.get("https://api.tenor.com/v1/search?", our_params)
 
     if r.status_code == 200:
@@ -26,6 +30,11 @@ def index():
         print(top_10gifs)
     else:
         top_10gifs = None
+
+    if button == "trending":
+        our_params["q"] = "trending"
+        r = requests.get("https://api.tenor.com/v1/trending?", params)
+        
 
     
     #gif_json = r.json() 
