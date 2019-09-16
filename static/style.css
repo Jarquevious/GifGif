@@ -1,0 +1,13 @@
+body {
+    text-align: center; 
+    background-color: transparent;
+}
+nav {
+    background-color: transparent;
+}
+.btn-primary {
+    color: #0CAEFE;
+    background-color: transparent; 
+    border-color: transparent;
+    margin: 0 0.5em;
+}
