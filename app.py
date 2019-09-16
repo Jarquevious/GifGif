@@ -19,6 +19,14 @@ def index():
        "limit" : 10
    }
 
+    r = requests.get("https://api.tenor.com/v1/search?", our_params)
+
+    if r.status_code == 200:
+        top_10gifs = json.loads(r.content)
+        print(top_10gifs)
+    else:
+        top_10gifs = None
+
     
     #gif_json = r.json() 
     # TODO: Extract the query term from url using request.args.get()
