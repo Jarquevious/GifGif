@@ -1,11 +1,18 @@
 <!-- templates/index.html -->
 {% extend 'base.html' %}{% block title %} Gif Gif {% endblock %} {% block content %}
 
-<form action= '/'>
+<div class="form_containter">
+    <form action="/">
     <p>
-        <input type="text" placeholder="Search..">
-    </p>
-</form>
+        <input class="typehead" type="text" name="search" placeholder="Search..."/>
+    </p> 
+    </form>
+
+    <button type="submit" name="button" value="trending" class="btn btn-primary">
+        trending gifs 
+    </button>
+
+</div>
 {% endblock %}
 <!-- TODO: Extend 'base.html' and put content into a block 'body' to match -->
 

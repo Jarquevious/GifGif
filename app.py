@@ -18,9 +18,7 @@ def index():
         "tennorkey" : "W5KKJLL9VWOE",
        "limit" : 10
    }
-
-
-
+   
     button = request.args.get('button')
     
     r = requests.get("https://api.tenor.com/v1/search?", params)
