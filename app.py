@@ -13,7 +13,7 @@ def index():
     """Return homepage."""    
     search = request.args.get('search')
     
-    our_params = {
+    params = {
        "q" : search,
         "tennorkey" : "W5KKJLL9VWOE",
        "limit" : 10
@@ -23,7 +23,7 @@ def index():
 
     button = request.args.get('button')
     
-    r = requests.get("https://api.tenor.com/v1/search?", our_params)
+    r = requests.get("https://api.tenor.com/v1/search?", params)
 
     if r.status_code == 200:
         top_10gifs = json.loads(r.content)
@@ -32,12 +32,13 @@ def index():
         top_10gifs = None
 
     if button == "trending":
-        our_params["q"] = "trending"
+        params["q"] = "trending"
         r = requests.get("https://api.tenor.com/v1/trending?", params)
-        
+
 
     
-    #gif_json = r.json() 
+    gif = json.loads(r.content)['results']
+
     # TODO: Extract the query term from url using request.args.get()
     
     # TODO: Make 'params' dictionary containing:
@@ -59,7 +60,7 @@ def index():
     # named parameter called 'gifs'
 
 
-    return render_template("index.html")#,gifs=gifs
+    return render_template("index.html", gif=gif)#,gifs=gifs
 
 if __name__ == '__main__':
     app.run(debug=True)
