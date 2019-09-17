@@ -58,7 +58,7 @@ def index():
     # named parameter called 'gifs'
 
 
-    return render_template("index.html", gif=gif)#,gifs=gifs
+    return render_template('index.html', gifs=gif)#,gifs=gifs
 
 if __name__ == '__main__':
     app.run(debug=True)
