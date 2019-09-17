@@ -11,6 +11,7 @@ tennorkey = "W5KKJLL9VWOE"
 @app.route('/')
 def index():
     """Return homepage."""    
+    
     search = request.args.get('search')
     
     params = {
@@ -18,25 +19,29 @@ def index():
         "tennorkey" : "W5KKJLL9VWOE",
        "limit" : 10
    }
-   
+
     button = request.args.get('button')
     
     r = requests.get("https://api.tenor.com/v1/search?", params)
 
-    if r.status_code == 200:
-        top_10gifs = json.loads(r.content)
-        print(top_10gifs)
-    else:
-        top_10gifs = None
+    # if r.status_code == 200:
+    #     top_10gifs = json.loads(r.content)
+    #     print(top_10gifs)
+    # else:
+    #     top_10gifs = None
 
     if button == "trending":
         params["q"] = "trending"
         r = requests.get("https://api.tenor.com/v1/trending?", params)
 
 
+    #print(r.status_code)
     
-    gif = json.loads(r.content)['results']
-
+    
+    gifs = json.loads(r.content)['results']
+    
+    
+    return render_template('index.html', gifs=gifs)#,gifs=gifs
     # TODO: Extract the query term from url using request.args.get()
     
     # TODO: Make 'params' dictionary containing:
@@ -56,9 +61,6 @@ def index():
 
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
-
-
-    return render_template('index.html', gifs=gif)#,gifs=gifs
 
 if __name__ == '__main__':
     app.run(debug=True)
