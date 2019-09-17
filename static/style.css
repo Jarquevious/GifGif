@@ -1,16 +1,20 @@
 body {
+    color: aliceblue;
+    font-size: 200%;
+    font-family: verdana;
     text-align: center; 
-    background-color: transparent;
+    background-color: #0CAEFE;
 }
 nav {
-    background-color: transparent;
+    background-color: #0CAEFE;
 }
 .btn-primary {
     color: #0CAEFE;
-    background-color: transparent; 
-    border-color: transparent;
-    margin: 0 0.5em;
+    background-color: white; 
+    border-color: black;
+    margin: 0 0.4em;
 }
+
 .tenor-gif-embed {
     max-width: 32vw;
     padding: 0;
@@ -23,10 +27,4 @@ nav {
     display: inline-flex;
 }
 
-/* footer {
-    background-color: gray;
-    position: absolute;
-    left: 0;
-    right: 0;
-} */
 
